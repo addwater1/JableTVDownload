@@ -45,9 +45,10 @@ def download(url):
   options.add_argument("user-agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36")
   dr = webdriver.Chrome(options=options)
   dr.get(url)
-  result = re.search("https://.+m3u8", dr.page_source)
+  result = re.search("src.+https://.+m3u8", dr.page_source)
   print(f'result: {result}')
   m3u8url = result[0]
+  m3u8url = m3u8url[5:]
   print(f'm3u8url: {m3u8url}')
 
   # 得到 m3u8 網址
